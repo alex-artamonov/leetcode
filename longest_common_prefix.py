@@ -29,7 +29,9 @@ def longest_common_prefix(strs):
     
     strs = strs[:strs.index(shortest)] + strs[strs.index(shortest) + 1:]
     
-    
+    if not shortest:
+        return ''
+
     if not all([word.startswith(shortest[0]) for word in strs]):
         return ''
     prefix = ''
@@ -37,11 +39,11 @@ def longest_common_prefix(strs):
 
     i = 1
     for chr in shortest:
-        if not all([word.startswith(prefix) for word in strs]):
-            return prefix[:-1]
-        else:            
+        if all([word.startswith(prefix) for word in strs]):
             prefix = shortest[:i]
-            i += 1
+            i += 1            
+        else:            
+            return prefix[:-1]
             # print(f"from else: {i=} {prefix=}")
 
     return prefix

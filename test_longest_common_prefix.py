@@ -12,3 +12,7 @@ def test_no_common_prefix():
 def test_equal_words():
     strs = ["flower","flower","flower","flower"]
     assert 'flower' == lcp.longest_common_prefix(strs)
+
+def test_empty_words():
+    strs = ['','']
+    assert '' == lcp.longest_common_prefix(strs)
