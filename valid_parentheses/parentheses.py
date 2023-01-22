@@ -1,4 +1,4 @@
-def isValid(s: str) -> bool:
+def isValid0(s: str) -> bool:
     brackets = {
         '(': ')',
         '{': '}',
@@ -25,4 +25,50 @@ def isValid(s: str) -> bool:
     
     return ''.join(target)
 
+
+def isValid1(s: str) -> bool:
+
+
+    brackets = ['{}',
+                '()',
+                '[]',
+                ]
+
+    if not any(ele in s for ele in brackets):
+        return s == ''
+    else:
+        for ele in brackets:
+            if ele in s:
+                return isValid(s[:s.index(ele)] + s[s.index(ele) + 2:])
+            
+
+def isValid(s: str) -> bool:
+
+
+    brackets = ['{}',
+                '()',
+                '[]',
+                ]
+    test = s
+    while any(ele in test for ele in brackets):
+        for ele in brackets:
+            if ele in test:
+                test = (test[:test.index(ele)] + test[test.index(ele) + 2:])
+                print(test)
+
+
+    return test == ''
+
+
+
+print(isValid("(([]){})"))
+print(isValid(''))
+print(isValid('['))
+    
+
+
+
+
+
+                                
    
