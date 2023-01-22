@@ -11,14 +11,18 @@ def isValid(s: str) -> bool:
         if c in brackets:
             if not previous in brackets:
                 target += c + brackets[c]
-                print(target)
+                # print(target)
             else:
                 target.insert(count_open, c)
                 target.insert(count_open, brackets[c])
         
             count_open -= 1
+        else:
+            # print('hi from else: ', target)
+            count_open -2
+
         previous = c
     
-    return ''.join(target) == s
+    return ''.join(target)
 
    
